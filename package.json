@@ -1,0 +1,20 @@
+{
+  "name": "gl-engine",
+  "version": "0.0.0",
+  "description": "This is a webgl engine",
+  "main": "index.js",
+  "author": "钱明 <“qianming@123kanfang.com”>",
+  "license": "MIT",
+  "scripts": {
+    "watch": "npm run build --watch",
+    "ts-types": " tsc --emitDeclarationOnly --outDir lib",
+    "build": "rimraf lib && node ./esbuild.js && npm run ts-types"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "esbuild": "^0.17.10",
+    "onchange": "^7.1.0",
+    "rimraf": "^4.1.2",
+    "typescript": "^4.9.5"
+  }
+}
