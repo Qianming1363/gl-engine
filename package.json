@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "This is a webgl engine",
   "main": "index.js",
-  "author": "钱明 <“qianming@123kanfang.com”>",
+  "author": "Qianming <“2468116431@qq.com”>",
   "license": "MIT",
   "scripts": {
     "watch": "node esbuild.js",
