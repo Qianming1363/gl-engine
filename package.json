@@ -6,7 +6,7 @@
   "author": "钱明 <“qianming@123kanfang.com”>",
   "license": "MIT",
   "scripts": {
-    "watch": "npm run build --watch",
+    "watch": "node esbuild.js",
     "ts-types": " tsc --emitDeclarationOnly --outDir lib",
     "build": "rimraf lib && node ./esbuild.js && npm run ts-types"
   },
