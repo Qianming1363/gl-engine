@@ -1,5 +1,6 @@
 import { getWebGLContext, initShaders } from "./lib/cuon-utils";
 import { Mat4, Vec2, Vec3, Vec4 } from "cuon-matrix-ts";
+import { Camera } from './core/camera/Camera';
 //LightedCube.js
 const VSHADER_SOURCE =
     'attribute vec4 a_Position;\n' +
@@ -73,10 +74,15 @@ function main() {
     lightDirection.normalize();//归一化
     gl.uniform3fv(u_LightDirection, lightDirection.elements);
 
-    var mvpMatrix = new Mat4();
-    console.log('宽高', canvas.clientWidth, canvas.clientHeight)
-    mvpMatrix.setPerspective(45, canvas.clientWidth/canvas.clientHeight, 1 ,10000);
-    mvpMatrix.lookAt(3, 3, 7, 0, 0, 0, 0, 1, 0);
+
+    // 相机的处理
+    const camera = new Camera(45, canvas.clientWidth/canvas.clientHeight, 1 ,10000);
+    camera.setPosition(3,3,7)
+    camera.lookAt(new Vec3(), new Vec3(0, 1, 0))
+
+
+    // render 的处理  renderer.render(camera, scene)
+    var mvpMatrix = camera.projectionMatrix.multiply(camera.viewMaterix) 
     gl.uniformMatrix4fv(u_MvpMatrix, false, mvpMatrix.elements);
 
 
